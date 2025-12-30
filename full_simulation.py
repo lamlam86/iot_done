@@ -23,7 +23,7 @@ from datetime import datetime, timedelta
 #                    CẤU HÌNH BLYNK CLOUD
 # ══════════════════════════════════════════════════════════════════════
 
-BLYNK_TOKEN = "zBEZC5F7mKjnyTmB-dkDqZZrt2HT1Soga"
+BLYNK_TOKEN = "zBEZC5F7mKjnyTmB-dkDqZZrt2HT1Sog"
 BLYNK_SERVER = "https://blynk.cloud/external/api"
 
 # Virtual Pins mapping
