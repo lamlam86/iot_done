@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "author": "Do An IoT - Canh Bao O Nhiem",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 50,
+      "left": 150,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -150,
+      "left": 100,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot_mq135",
+      "top": 280,
+      "left": -80,
+      "rotate": 0,
+      "attrs": { "value": "200" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot_mq7",
+      "top": 280,
+      "left": 20,
+      "rotate": 0,
+      "attrs": { "value": "100" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot_dust",
+      "top": 280,
+      "left": 120,
+      "rotate": 0,
+      "attrs": { "value": "150" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot_sound",
+      "top": 280,
+      "left": 220,
+      "rotate": 0,
+      "attrs": { "value": "180" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_green",
+      "top": -50,
+      "left": 380,
+      "attrs": { "color": "green", "label": "AN TOAN" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_yellow",
+      "top": -50,
+      "left": 430,
+      "attrs": { "color": "yellow", "label": "CANH BAO" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_red",
+      "top": -50,
+      "left": 480,
+      "attrs": { "color": "red", "label": "NGUY HIEM" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": -50,
+      "left": 540,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 10,
+      "left": 370,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 10,
+      "left": 420,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 10,
+      "left": 470,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    ["pot_mq135:SIG", "uno:A0", "green", ["v20", "h50"]],
+    ["pot_mq135:VCC", "uno:5V", "red", ["v30", "h80"]],
+    ["pot_mq135:GND", "uno:GND.1", "black", ["v40", "h90"]],
+    
+    ["pot_mq7:SIG", "uno:A1", "blue", ["v20", "h40"]],
+    ["pot_mq7:VCC", "uno:5V", "red", ["v30", "h60"]],
+    ["pot_mq7:GND", "uno:GND.1", "black", ["v40", "h70"]],
+    
+    ["pot_dust:SIG", "uno:A2", "orange", ["v20", "h30"]],
+    ["pot_dust:VCC", "uno:5V", "red", ["v30", "h40"]],
+    ["pot_dust:GND", "uno:GND.1", "black", ["v40", "h50"]],
+    
+    ["pot_sound:SIG", "uno:A3", "purple", ["v20", "h20"]],
+    ["pot_sound:VCC", "uno:5V", "red", ["v30", "h30"]],
+    ["pot_sound:GND", "uno:GND.1", "black", ["v40", "h40"]],
+    
+    ["uno:5", "r1:1", "green", ["h0"]],
+    ["r1:2", "led_green:A", "green", ["v0"]],
+    ["led_green:C", "uno:GND.2", "black", ["v50", "h-200"]],
+    
+    ["uno:6", "r2:1", "gold", ["h0"]],
+    ["r2:2", "led_yellow:A", "gold", ["v0"]],
+    ["led_yellow:C", "uno:GND.2", "black", ["v60", "h-180"]],
+    
+    ["uno:7", "r3:1", "red", ["h0"]],
+    ["r3:2", "led_red:A", "red", ["v0"]],
+    ["led_red:C", "uno:GND.2", "black", ["v70", "h-160"]],
+    
+    ["uno:8", "buzzer:1", "violet", ["h0"]],
+    ["buzzer:2", "uno:GND.2", "black", ["v80", "h-140"]],
+    
+    ["lcd1:GND", "uno:GND.3", "black", ["v0"]],
+    ["lcd1:VCC", "uno:5V", "red", ["v0"]],
+    ["lcd1:SDA", "uno:A4", "cyan", ["v0"]],
+    ["lcd1:SCL", "uno:A5", "cyan", ["v0"]]
+  ],
+  "serialMonitor": {
+    "display": "always",
+    "newline": "lf"
+  }
+}

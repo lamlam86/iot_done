@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "author": "IoT Air Quality + AI Prediction Project",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 0,
+      "left": 100,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": -150,
+      "left": 0,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot-air",
+      "top": 200,
+      "left": -100,
+      "attrs": { "value": "512" },
+      "label": "MQ-135 Air"
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot-co",
+      "top": 200,
+      "left": 20,
+      "attrs": { "value": "205" },
+      "label": "MQ-7 CO"
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot-dust",
+      "top": 200,
+      "left": 140,
+      "attrs": { "value": "341" },
+      "label": "GP2Y Dust"
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot-noise",
+      "top": 200,
+      "left": 260,
+      "attrs": { "value": "512" },
+      "label": "KY-038 Sound"
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led-green",
+      "top": -50,
+      "left": 350,
+      "attrs": { "color": "green" },
+      "label": "SAFE"
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led-yellow",
+      "top": 0,
+      "left": 350,
+      "attrs": { "color": "yellow" },
+      "label": "WARNING"
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led-red",
+      "top": 50,
+      "left": 350,
+      "attrs": { "color": "red" },
+      "label": "DANGER"
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 100,
+      "left": 340,
+      "attrs": {},
+      "label": "ALARM"
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -50,
+      "left": 300,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 0,
+      "left": 300,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 50,
+      "left": 300,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    ["uno:A4", "lcd:SDA", "green", ["v0"]],
+    ["uno:A5", "lcd:SCL", "green", ["v0"]],
+    ["uno:5V", "lcd:VCC", "red", ["v0"]],
+    ["uno:GND.1", "lcd:GND", "black", ["v0"]],
+    
+    ["pot-air:SIG", "uno:A0", "purple", ["v0"]],
+    ["pot-air:VCC", "uno:5V", "red", ["v0"]],
+    ["pot-air:GND", "uno:GND.1", "black", ["v0"]],
+    
+    ["pot-co:SIG", "uno:A1", "orange", ["v0"]],
+    ["pot-co:VCC", "uno:5V", "red", ["v0"]],
+    ["pot-co:GND", "uno:GND.1", "black", ["v0"]],
+    
+    ["pot-dust:SIG", "uno:A2", "brown", ["v0"]],
+    ["pot-dust:VCC", "uno:5V", "red", ["v0"]],
+    ["pot-dust:GND", "uno:GND.1", "black", ["v0"]],
+    
+    ["pot-noise:SIG", "uno:A3", "blue", ["v0"]],
+    ["pot-noise:VCC", "uno:5V", "red", ["v0"]],
+    ["pot-noise:GND", "uno:GND.1", "black", ["v0"]],
+    
+    ["uno:5", "r1:1", "green", ["v0"]],
+    ["r1:2", "led-green:A", "green", ["v0"]],
+    ["led-green:C", "uno:GND.1", "black", ["v0"]],
+    
+    ["uno:6", "r2:1", "yellow", ["v0"]],
+    ["r2:2", "led-yellow:A", "yellow", ["v0"]],
+    ["led-yellow:C", "uno:GND.1", "black", ["v0"]],
+    
+    ["uno:7", "r3:1", "red", ["v0"]],
+    ["r3:2", "led-red:A", "red", ["v0"]],
+    ["led-red:C", "uno:GND.1", "black", ["v0"]],
+    
+    ["uno:8", "buzzer:1", "orange", ["v0"]],
+    ["buzzer:2", "uno:GND.1", "black", ["v0"]]
+  ]
+}
