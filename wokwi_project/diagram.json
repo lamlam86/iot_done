@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "author": "IoT Air Quality Monitor",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -180,
+      "left": 50,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 120,
+      "left": -180,
+      "attrs": { "value": "50" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot2",
+      "top": 120,
+      "left": -100,
+      "attrs": { "value": "30" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot3",
+      "top": 200,
+      "left": -180,
+      "attrs": { "value": "20" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot4",
+      "top": 200,
+      "left": -100,
+      "attrs": { "value": "40" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -80,
+      "left": 300,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -80,
+      "left": 340,
+      "attrs": { "color": "yellow" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": -80,
+      "left": 380,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -80,
+      "left": 430,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -30,
+      "left": 290,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -30,
+      "left": 330,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": -30,
+      "left": 370,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label1",
+      "top": 100,
+      "left": -180,
+      "attrs": { "text": "AIR (A0)" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label2",
+      "top": 100,
+      "left": -100,
+      "attrs": { "text": "CO (A1)" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label3",
+      "top": 180,
+      "left": -180,
+      "attrs": { "text": "DUST (A2)" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "label4",
+      "top": 180,
+      "left": -100,
+      "attrs": { "text": "NOISE (A3)" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "title",
+      "top": -220,
+      "left": 30,
+      "attrs": { "text": "IOT AIR QUALITY MONITOR" }
+    }
+  ],
+  "connections": [
+    [ "uno:A0", "pot1:SIG", "green", [ "v0" ] ],
+    [ "uno:A1", "pot2:SIG", "blue", [ "v0" ] ],
+    [ "uno:A2", "pot3:SIG", "orange", [ "v0" ] ],
+    [ "uno:A3", "pot4:SIG", "purple", [ "v0" ] ],
+    [ "pot1:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "pot1:GND", "uno:GND.1", "black", [ "v0" ] ],
+    [ "pot2:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "pot2:GND", "uno:GND.1", "black", [ "v0" ] ],
+    [ "pot3:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "pot3:GND", "uno:GND.1", "black", [ "v0" ] ],
+    [ "pot4:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "pot4:GND", "uno:GND.1", "black", [ "v0" ] ],
+    [ "uno:5", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "led1:A", "green", [ "v0" ] ],
+    [ "led1:C", "uno:GND.2", "black", [ "v0" ] ],
+    [ "uno:6", "r2:1", "yellow", [ "v0" ] ],
+    [ "r2:2", "led2:A", "yellow", [ "v0" ] ],
+    [ "led2:C", "uno:GND.2", "black", [ "v0" ] ],
+    [ "uno:7", "r3:1", "red", [ "v0" ] ],
+    [ "r3:2", "led3:A", "red", [ "v0" ] ],
+    [ "led3:C", "uno:GND.2", "black", [ "v0" ] ],
+    [ "uno:8", "bz1:1", "purple", [ "v0" ] ],
+    [ "bz1:2", "uno:GND.2", "black", [ "v0" ] ],
+    [ "lcd1:GND", "uno:GND.3", "black", [ "v0" ] ],
+    [ "lcd1:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "lcd1:SDA", "uno:A4", "cyan", [ "v0" ] ],
+    [ "lcd1:SCL", "uno:A5", "cyan", [ "v0" ] ]
+  ]
+}
